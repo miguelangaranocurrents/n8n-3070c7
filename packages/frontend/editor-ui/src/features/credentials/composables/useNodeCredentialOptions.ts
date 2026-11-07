@@ -222,7 +222,8 @@ export function useNodeCredentialOptions(
 		 */
 		return (
 			showMixedCredentials(credentialType) ||
-			(toValue(displayAllOptions) && isMainAuthCredential(credentialType))
+			isMainAuthCredential(credentialType) ||
+			toValue(displayAllOptions)
 		);
 	}
 
