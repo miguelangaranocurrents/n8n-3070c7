@@ -26,6 +26,11 @@ export function getAutoSelectedCredential(
 	node: INodeUi,
 	overrideCredType: NodeParameterValueType = '',
 	overrideCredentials?: ICredentialsResponse[],
+	/** Must match the host's `showAll`, so the auto-select sees the same
+	 * options the dropdown renders from — otherwise it can pick a credential
+	 * the dropdown does not list, which renders as a populated selector where
+	 * the host expects an empty state. */
+	displayAllOptions = false,
 ): AutoSelectedCredential | undefined {
 	if (!isEmpty(node.credentials ?? {})) return undefined;
 
@@ -34,7 +39,7 @@ export function getAutoSelectedCredential(
 		node,
 		nodeTypesStore.getNodeType(node.type, node.typeVersion),
 		overrideCredType,
-		false,
+		displayAllOptions,
 		overrideCredentials,
 	);
 

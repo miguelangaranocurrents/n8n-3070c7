@@ -526,6 +526,7 @@ watch(
 			node.value,
 			props.overrideCredType,
 			props.credentials,
+			props.showAll,
 		);
 		if (autoSelected) {
 			onCredentialSelected(
